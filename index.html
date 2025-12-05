@@ -97,5 +97,59 @@ function generateFibonacci(){
   document.getElementById("goldenRatio").textContent="φ ≈ "+(b/a).toFixed(6);
 }
 </script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<script>
+document.body.addEventListener('click', () => {
+  confetti({particleCount:100, spread:70, origin:{y:0.6}});
+});
+</script>
+  <div class="floating">π ∞ √ ∫ ∑ ± ≈ ≠ ∆ ∇ λ φ θ ω α β γ</div>
+<style>
+.floating {
+  position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;
+  font-size: 3rem; opacity: 0.1; color: #ffd89b; animation: float 20s infinite linear;
+}
+.floating::before {content:attr(data-text); position:absolute; animation:inherit;}
+@keyframes float{0%{transform:translateY(100vh) rotate(0deg)} 100%{transform:translateY(-100px) rotate(360deg)}}
+.floating {animation: float 25s infinite linear;}
+</style>
+<script>document.querySelector('.floating').setAttribute('data-text', 'π ∞ √ ∫ ∑ ± ≈ ≠ ∆ ∇ λ φ θ ω α β γ '.repeat(20))</script>
+  <h1 id="typewriter">BMath.com</h1>
+<script>
+const txt = "BMath.com – Math is Beautiful ✨";
+let i = 0;
+const type = () => {
+  if (i < txt.length) {
+    document.getElementById("typewriter").innerHTML += txt.charAt(i);
+    i++;
+    setTimeout(type, 100);
+  }
+};
+setTimeout(type, 500);
+</script>
+<style>#typewriter::after{content:'|';animation:blink 1s infinite;}@keyframes blink{50%{opacity:0}}</style>
+  <canvas id="particles"></canvas>
+<script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+<script>
+particlesJS("particles", {
+  "particles": {"number":{"value":80},"color":{"value":"#ffd89b"},"shape":{"type":"circle"},"opacity":{"value":0.7},"size":{"value":4},"move":{"enable":true,"speed":2}},
+  "interactivity": {"detect_on":"canvas","events":{"onhover":{"enable":true,"mode":"grab"},"onclick":{"enable":true,"mode":"push"}}}
+});
+</script>
+<style>#particles{position:fixed;top:0;left:0;width:100%;height:100%;z-index:-1;}</style>
+  <div style="text-align:center;margin:50px;">
+  <button onclick="like()" style="font-size:40px;background:none;border:none;cursor:pointer;">❤️</button>
+  <span id="likes" style="font-size:24px;">0</span> people love this
+</div>
+<script>
+let likes = localStorage.getItem('likes')||0;
+document.getElementById('likes').textContent = likes;
+function like(){
+  likes++; localStorage.setItem('likes',likes);
+  document.getElementById('likes').textContent = likes;
+  confetti({particleCount:30,spread:60,origin:{x:0.5,y:0.8}});
+}
+</script>
 </body>
 </html>
+
