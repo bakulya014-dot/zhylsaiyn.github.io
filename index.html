@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Math/Tech Portfolio — Your Name</title>
+  <title>Math/Tech Portfolio — Bakytzhan</title>
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -22,6 +22,8 @@
 
   <style>
     :root{
+      --transition: 0.3s ease;
+
       --bg:#0c1220;
       --panel:#111a2e;
       --panel-2:#0f1729;
@@ -31,6 +33,23 @@
       --muted:#aab7d1;
       --border:rgba(255,255,255,0.08);
     }
+    body{transition: background var(--transition), color var(--transition);}
+.card, .math-box, .hero-card{transition: background var(--transition), border-color var(--transition);}
+.theme-btn{
+  background:transparent;border:1px solid var(--border);color:var(--text);
+  padding:6px 12px;border-radius:10px;cursor:pointer;font-weight:600;
+}
+body.light{
+  --bg:#f5f7ff;
+  --panel:#ffffff;
+  --panel-2:#f0f4ff;
+  --accent:#1f6feb;
+  --accent-2:#0f766e;
+  --text:#0b1220;
+  --muted:#475569;
+  --border:rgba(0,0,0,0.08);
+}
+
     *{box-sizing:border-box;}
     body{
       margin:0;
@@ -210,7 +229,8 @@ print("Fibonacci (10 terms):", fib(10))
       </div>
     </section>
 
-    <footer>© 2026 Your Name • Built with MathJax + PyScript</footer>
+    <footer>© 2026 Bakytzhan • Built with MathJax + PyScript</footer>
+
   </div>
   <script>
   const toggle = document.getElementById("themeToggle");
@@ -222,6 +242,7 @@ print("Fibonacci (10 terms):", fib(10))
 
 </body>
 </html>
+
 
 
 
