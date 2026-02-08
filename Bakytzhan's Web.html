@@ -1,111 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BMath.com – Math is Beautiful</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Math/Tech Portfolio — Your Name</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;600;700&family=Work+Sans:wght@400;600&display=swap" rel="stylesheet" />
+
+  <!-- PyScript (for interactive math) -->
+  <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+  <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+  <!-- MathJax (for formulas) -->
+  <script>
+    window.MathJax = { tex: { inlineMath: [['$', '$'], ['\\(', '\\)']] } };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
   <style>
-    
-    body{font-family:'Poppins',sans-serif;background:linear-gradient(135deg,#1e3c72,#2a5298);color:white;min-height:100vh;}
-    header{text-align:center;padding:60px 20px;}
-    h1{font-size:4.5rem;font-weight:800;background:linear-gradient(90deg,#ffd89b,#19547b);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
-    .tagline{font-size:1.6rem;opacity:0.9;margin:15px 0;}
-    .interactive-section{max-width:1100px;margin:0 auto;padding:40px 20px;display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:35px;}
-    .box{background:rgba(255,255,255,0.12);padding:30px;border-radius:20px;backdrop-filter:blur(12px);border:1px solid rgba(255,255,255,0.2);text-align:center;transition:.4s;}
-    .box:hover{transform:translateY(-12px);box-shadow:0 25px 50px rgba(0,0,0,0.4);}
-    h3{font-size:1.9rem;margin-bottom:15px;}
-    button{background:#ffd89b;color:#1e3c72;padding:12px 28px;margin:10px 5px;border:none;border-radius:50px;font-weight:bold;cursor:pointer;transition:.3s;}
-    button:hover{background:#ffac12;transform:scale(1.1);}
-    input{padding:10px;border-radius:8px;margin:5px;width:70px;font-size:16px;}
-    canvas{margin-top:15px;border-radius:12px;background:#ffffff15;}
-    footer{text-align:center;padding:60px;font-size:1.2rem;opacity:0.8;}
-    @keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+    :root{
+      --bg:#0c1220;
+      --panel:#111a2e;
+      --panel-2:#0f1729;
+      --accent:#36e0b6;
+      --accent-2:#6fc1ff;
+      --text:#f1f5ff;
+      --muted:#aab7d1;
+      --border:rgba(255,255,255,0.08);
+    }
+    *{box-sizing:border-box;}
+    body{
+      margin:0;
+      font-family:'Work Sans',sans-serif;
+      background:
+        radial-gradient(900px 400px at 10% 10%, rgba(111,193,255,0.15), transparent 60%),
+        radial-gradient(800px 500px at 90% 20%, rgba(54,224,182,0.12), transparent 60%),
+        var(--bg);
+      color:var(--text);
+    }
+    .container{max-width:1100px;margin:0 auto;padding:24px;}
+    .nav{
+      position:sticky;top:0;z-index:10;
+      backdrop-filter:blur(10px);
+      background:rgba(12,18,32,0.75);
+      border-bottom:1px solid var(--border);
+    }
+    .nav-inner{
+      display:flex;gap:18px;align-items:center;justify-content:space-between;
+      max-width:1100px;margin:0 auto;padding:16px 24px;
+    }
+    .brand{font-family:'Space Grotesk',sans-serif;font-weight:700;letter-spacing:0.5px;}
+    .nav a{color:var(--text);text-decoration:none;font-weight:600;opacity:0.85;}
+    .nav a:hover{color:var(--accent);opacity:1;}
+    .hero{
+      display:grid;grid-template-columns:1.2fr 0.8fr;gap:32px;
+      align-items:center;padding:50px 0 30px;
+    }
+    h1,h2,h3{font-family:'Space Grotesk',sans-serif;margin:0 0 12px;}
+    h1{font-size:3rem;}
+    .tagline{color:var(--muted);font-size:1.1rem;}
+    .hero-card{
+      background:linear-gradient(145deg, var(--panel), var(--panel-2));
+      border:1px solid var(--border);padding:24px;border-radius:18px;
+    }
+    .pill{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(54,224,182,0.12);color:var(--accent);}
+    .section{padding:40px 0;}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;}
+    .card{
+      background:var(--panel);border:1px solid var(--border);
+      padding:18px;border-radius:16px;
+      transition:transform 0.2s ease, border-color 0.2s ease;
+    }
+    .card:hover{transform:translateY(-6px);border-color:rgba(54,224,182,0.4);}
+    .shot{
+      height:140px;border-radius:12px;background:
+        linear-gradient(120deg, rgba(111,193,255,0.2), rgba(54,224,182,0.2)),
+        repeating-linear-gradient(45deg, rgba(255,255,255,0.06), rgba(255,255,255,0.06) 10px, transparent 10px, transparent 20px);
+      border:1px dashed rgba(255,255,255,0.15);
+      display:flex;align-items:center;justify-content:center;color:var(--muted);
+      margin-bottom:12px;font-size:0.9rem;
+    }
+    .link{color:var(--accent-2);text-decoration:none;font-weight:600;}
+    .math-box{
+      background:var(--panel-2);border:1px solid var(--border);
+      padding:20px;border-radius:16px;margin-top:14px;
+    }
+    .math-grid{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;
+    }
+    .contact{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px;
+    }
+    .contact .card{height:100%;}
+    footer{padding:24px 0;color:var(--muted);text-align:center;}
+    @media (max-width:860px){
+      .hero{grid-template-columns:1fr;}
+      .contact{grid-template-columns:1fr;}
+    }
   </style>
 </head>
 <body>
-  <header>
-    <h1>BMath<span style="font-weight:300;">.com</span></h1>
-    <p class="tagline">Math made visual • fun • unforgettable</p>
-    <p style="margin-top:25px;font-size:1.4rem;">Created with  by Zhylsaiyn Bakytzhan</p>
-  </header>
-
-  <section class="interactive-section">
-
-    <!-- Quadratic Solver + Graph -->
-    <div class="box">
-      <h3>📈 Quadratic Solver + Graph</h3>
-      <p style="margin:8px 0 14px;opacity:0.9;">
-        A quadratic solver finds the roots (solutions) of equations like ax² + bx + c = 0
-        and plots the parabola to show the curve visually.
-      </p>
-      a: <input id="qa" value="1" type="number">
-      b: <input id="qb" value="-5" type="number">
-      c: <input id="qc" value="6" type="number">
-      <button onclick="solveQuadratic()">Solve & Draw</button>
-      <div id="quadRoots" style="font-size:22px;margin:15px 0;"></div>
-      <canvas id="parabolaCanvas" width="350" height="280"></canvas>
-    </div>
-
-    <!-- Fibonacci & Golden Spiral -->
-    <div class="box">
-      <h3>🐚 Fibonacci & Golden Ratio</h3>
-      <p style="margin:8px 0 14px;opacity:0.9;">
-        The Fibonacci sequence adds the previous two numbers to get the next. The ratio
-        between consecutive terms approaches the golden ratio (φ ≈ 1.618).
-      </p>
-      Terms: <input id="fibTerms" value="15" type="number" min="1" max="20">
-      <button onclick="generateFibonacci()">Generate</button>
-      <div id="fibSequence" style="margin:15px 0;font-family:monospace;line-height:1.8;"></div>
-      <div id="goldenRatio" style="font-size:28px;font-weight:bold;color:#ffd89b;"></div>
-      <canvas id="goldenSpiral" width="300" height="300"></canvas>
-    </div>
-
-    <!-- Mini Calculator -->
-    <div class="box">
-      <h3>✖ Mini Calculator</h3>
-      <p style="margin:8px 0 14px;opacity:0.9;">
-        A simple calculator to add, subtract, multiply, and divide numbers quickly.
-      </p>
-      <input id="calc" style="width:100%;padding:15px;font-size:24px;text-align:right;border-radius:12px;">
-      <div style="margin-top:10px;">
-        <button onclick="c('7')">7</button><button onclick="c('8')">8</button><button onclick="c('9')">9</button><button onclick="c('/')">/</button>
-        <button onclick="c('4')">4</button><button onclick="c('5')">5</button><button onclick="c('6')">6</button><button onclick="c('*')">*</button>
-        <button onclick="c('1')">1</button><button onclick="c('2')">2</button><button onclick="c('3')">3</button><button onclick="c('-')">-</button>
-        <button onclick="c('0')">0</button><button onclick="c('.')">.</button><button onclick="calc.value=eval(calc.value)">=</button><button onclick="c('+')">+</button>
-        <button onclick="calc.value=''">C</button>
+  <nav class="nav">
+    <div class="nav-inner">
+      <div class="brand">YourName.dev</div>
+      <div style="display:flex;gap:16px;">
+        <a href="#home">Home</a>
+        <a href="#projects">Projects</a>
+        <a href="#math">Math Lab</a>
+        <a href="#contact">Contact</a>
       </div>
     </div>
+  </nav>
 
-  </section>
+  <div class="container">
+    <!-- Home -->
+    <section id="home" class="hero">
+      <div>
+        <span class="pill">Math + Tech Portfolio</span>
+        <h1>Hello, I’m Your Name</h1>
+        <p class="tagline">
+          I build interactive math tools, data‑driven apps, and creative visualizations.
+          My focus is turning complex ideas into intuitive experiences.
+        </p>
+      </div>
+      <div class="hero-card">
+        <h3>Quick Profile</h3>
+        <p>Student developer • Math enthusiast • Frontend & Python</p>
+        <p>Currently exploring: visualization, interactive learning, and algorithms.</p>
+      </div>
+    </section>
 
-  <footer>
-    © 2025 <strong>BMath.com</strong> • Made with infinite love for math by Zhylsaiyn Bakytzhan
-  </footer>
+    <!-- Projects -->
+    <section id="projects" class="section">
+      <h2>Projects</h2>
+      <div class="grid-3">
+        <div class="card">
+          <div class="shot">Screenshot Placeholder</div>
+          <h3>Quadratic Visualizer</h3>
+          <p>Interactive tool to solve and graph quadratic equations with real‑time updates.</p>
+          <a class="link" href="https://github.com/yourname/quadratic-visualizer" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="card">
+          <div class="shot">Screenshot Placeholder</div>
+          <h3>Prime Explorer</h3>
+          <p>Check primes, factor numbers, and visualize patterns in the number line.</p>
+          <a class="link" href="https://github.com/yourname/prime-explorer" target="_blank" rel="noopener">GitHub</a>
+        </div>
+        <div class="card">
+          <div class="shot">Screenshot Placeholder</div>
+          <h3>Golden Ratio Lab</h3>
+          <p>Generate Fibonacci sequences and explore golden ratio convergence.</p>
+          <a class="link" href="https://github.com/yourname/golden-ratio-lab" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
 
-<script>
-// All your working functions (shortened but 100% working)
-function c(x){document.getElementById("calc").value += x}
-function solveQuadratic(){
-  let a=+document.getElementById("qa").value, b=+document.getElementById("qb").value, c=+document.getElementById("qc").value;
-  let d=b*b-4*a*c, roots="";
-  if(d>0){let r1=(-b+Math.sqrt(d))/(2*a), r2=(-b-Math.sqrt(d))/(2*a); roots=`Roots: ${r1.toFixed(3)} & ${r2.toFixed(3)}`; }
-  else if(d===0){let r=-b/(2*a); roots=`Double root: ${r.toFixed(3)}`; }
-  else roots="Complex roots 🌈";
-  document.getElementById("quadRoots").innerHTML=roots;
-  drawParabola(a,b,c);
-}
-function drawParabola(a,b,c){
-  let canvas=document.getElementById("parabolaCanvas"), ctx=canvas.getContext("2d");
-  ctx.clearRect(0,0,350,280); ctx.strokeStyle="#ffd89b"; ctx.lineWidth=4; ctx.beginPath();
-  for(let i=0;i<350;i++){let x=(i-175)/25, y=a*x*x+b*x+c, py=140-y*12; i===0?ctx.moveTo(i,py):ctx.lineTo(i,py);} ctx.stroke();
-}
-function generateFibonacci(){
-  let n=+document.getElementById("fibTerms").value, a=0,b=1,s="0, 1";
-  for(let i=2;i<n;i++){let c=a+b; s+=", "+c; a=b; b=c;}
-  document.getElementById("fibSequence").textContent=s;
-  document.getElementById("goldenRatio").textContent="φ ≈ "+(b/a).toFixed(6);
-}
-</script>
+    <!-- Math Section -->
+    <section id="math" class="section">
+      <h2>Interactive Math Lab</h2>
+      <p>MathJax renders formulas cleanly, and PyScript runs Python in the browser.</p>
+
+      <div class="math-grid">
+        <div class="math-box">
+          <h3>Formula (MathJax)</h3>
+          <p>Quadratic formula:</p>
+          <p>$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$</p>
+        </div>
+
+        <div class="math-box">
+          <h3>PyScript Example</h3>
+          <p>Compute Fibonacci numbers:</p>
+          <py-script>
+def fib(n):
+    a, b = 0, 1
+    out = [a, b]
+    for _ in range(2, n):
+        a, b = b, a + b
+        out.append(b)
+    return out
+
+print("Fibonacci (10 terms):", fib(10))
+          </py-script>
+        </div>
+
+        <div class="math-box">
+          <h3>Derivative Example</h3>
+          <p>$$\\frac{d}{dx}(x^3 + 2x^2 - 4x + 1) = 3x^2 + 4x - 4$$</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section">
+      <h2>Contact</h2>
+      <div class="contact">
+        <div class="card">
+          <h3>Email</h3>
+          <p>yourname@email.com</p>
+        </div>
+        <div class="card">
+          <h3>GitHub</h3>
+          <a class="link" href="https://github.com/yourname" target="_blank" rel="noopener">github.com/yourname</a>
+        </div>
+      </div>
+    </section>
+
+    <footer>© 2026 Your Name • Built with MathJax + PyScript</footer>
+  </div>
 </body>
 </html>
