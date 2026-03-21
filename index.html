@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ZhylysAIyn | AI Math Tutor for Hackathon 5.0</title>
+  <meta
+    name="description"
+    content="AI-powered math tutor with Gemini, step-by-step solving, mistake detection, function graphing, and a polished startup-style interface."
+  >
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [["$", "$"], ["\\(", "\\)"]],
+        displayMath: [["$$", "$$"], ["\\[", "\\]"]]
+      },
+      svg: {
+        fontCache: "global"
+      }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <div class="page-shell">
+    <header class="site-header">
+      <a class="brand" href="#top">ZhylysAIyn</a>
+      <nav class="site-nav">
+        <a href="#projects">Projects</a>
+        <a href="#tutor">AI Tutor</a>
+        <a href="#lab">Live Lab</a>
+        <a href="#chain">Blockchain</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="mode-toggle" id="modeToggle" type="button" aria-label="Toggle color mode">Light Mode</button>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">5.0 Hackathon / AI + Blockchain</p>
+          <h1>AI-powered math tutoring with explanations, graphing, and trustable learning records.</h1>
+          <p class="hero-text">
+            This product evolves the original portfolio into a startup-style AI Math Tutor Web App. It can solve
+            step by step, explain concepts clearly, detect mistakes in student solutions, visualize functions,
+            and anchor milestones in a blockchain-inspired credential layer.
+          </p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#tutor">Launch AI Tutor</a>
+            <a class="button button-secondary" href="#projects">See Product Story</a>
+          </div>
+        </div>
+        <div class="hero-panel">
+          <div class="panel-grid">
+            <article class="signal-card">
+              <span class="signal-label">Core Theme</span>
+              <strong>AI Tutor for Math Learning</strong>
+              <p>Real Gemini responses with step-by-step guidance and concept-focused explanations.</p>
+            </article>
+            <article class="signal-card">
+              <span class="signal-label">Flagship Flow</span>
+              <strong>Solve, Check, Visualize</strong>
+              <p>Students can ask for help, verify their own work, and see a function instantly on a graph.</p>
+            </article>
+            <article class="signal-card">
+              <span class="signal-label">Trust Layer</span>
+              <strong>Credential Ledger</strong>
+              <p>Key learning achievements can be written into a tamper-evident record for demo impact.</p>
+            </article>
+          </div>
+          <div class="hero-metrics">
+            <div>
+              <span class="metric-value" data-count="4">0</span>
+              <span class="metric-label">Product modules</span>
+            </div>
+            <div>
+              <span class="metric-value" data-count="3">0</span>
+              <span class="metric-label">AI smart modes</span>
+            </div>
+            <div>
+              <span class="metric-value" data-count="100">0</span>
+              <span class="metric-label">Demo readiness</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="projects">
+        <div class="section-heading">
+          <p class="eyebrow">Product Story</p>
+          <h2>A hackathon product instead of a static portfolio.</h2>
+          <p>
+            The original math and AI strengths are still here, but now they are presented as one clear startup concept:
+            an AI tutor that teaches, checks, visualizes, and proves learning progress.
+          </p>
+        </div>
+        <div class="card-grid">
+          <article class="project-card accent-coral">
+            <p class="project-tag">AI Tutoring</p>
+            <h3>Step-by-Step Solver</h3>
+            <p>Users ask a question, Gemini explains the method, breaks the work into steps, and gives the final answer clearly.</p>
+            <ul class="card-list">
+              <li>Real AI chat flow</li>
+              <li>Concept explanation modes</li>
+              <li>MathJax rendering for formulas</li>
+            </ul>
+          </article>
+          <article class="project-card accent-gold">
+            <p class="project-tag">Learning Feedback</p>
+            <h3>Check My Solution</h3>
+            <p>Students paste their own method and the tutor detects mistakes, explains why, and shows a correct approach.</p>
+            <ul class="card-list">
+              <li>Error detection</li>
+              <li>Supportive explanations</li>
+              <li>Useful for self-learning</li>
+            </ul>
+          </article>
+          <article class="project-card accent-teal">
+            <p class="project-tag">Visualization + Trust</p>
+            <h3>Function Grapher + Ledger</h3>
+            <p>Math becomes visual, while important learning milestones can be preserved in a chain-style record.</p>
+            <ul class="card-list">
+              <li>Function graph visualization</li>
+              <li>Interactive coefficient demos</li>
+              <li>Blockchain-inspired achievement tracking</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section split-section">
+        <div class="section-heading">
+          <p class="eyebrow">Why It Fits</p>
+          <h2>Clear, judge-friendly narrative.</h2>
+        </div>
+        <div class="narrative-grid">
+          <article class="narrative-card">
+            <span>Problem</span>
+            <p>Students often get answers without understanding the reasoning, and they struggle to know where their own method went wrong.</p>
+          </article>
+          <article class="narrative-card">
+            <span>Solution</span>
+            <p>An AI tutor explains, checks, and visualizes math in one interface, making learning interactive instead of passive.</p>
+          </article>
+          <article class="narrative-card">
+            <span>Pitch</span>
+            <p>"We turn math help into a product students can actually learn from, not just copy from."</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="tutor" data-topic="quadratic equations">
+        <div class="section-heading">
+          <p class="eyebrow">AI Tutor</p>
+          <h2>AI-powered math tutor with secure backend integration.</h2>
+          <p>
+            This tutor is aware that the current learning topic is <strong>quadratic equations</strong>. Change the topic label later
+            if you create other lesson pages. The chatbot now expects a backend endpoint that holds the real AI key on the server.
+          </p>
+        </div>
+
+        <div class="tutor-layout">
+          <article class="tutor-sidebar">
+            <div class="sidebar-card">
+              <h3>Configuration</h3>
+              <p class="input-note">Store your real AI key in the server environment as <code>GEMINI_API_KEY</code>. The browser should never contain the secret key.</p>
+              <p class="input-note">This page sends chat requests to <code>/api/chat</code>, and the backend talks to Gemini securely.</p>
+              <p class="input-note" id="apiStatus">Status: waiting for backend</p>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Smart Modes</h3>
+              <div class="mode-pill-group" id="modePills">
+                <button class="mode-pill is-active" type="button" data-mode="explain">Explain simply</button>
+                <button class="mode-pill" type="button" data-mode="fast">Solve fast</button>
+                <button class="mode-pill" type="button" data-mode="check">Check answer</button>
+              </div>
+              <button class="button button-secondary full-width" id="checkSolutionButton" type="button">Check my solution</button>
+            </div>
+
+            <div class="sidebar-card">
+              <h3>Try This</h3>
+              <div class="example-list">
+                <button class="example-chip" type="button" data-example="Solve x^2 - 5x + 6 = 0 step by step.">Quadratic roots</button>
+                <button class="example-chip" type="button" data-example="Explain simply why the discriminant matters in quadratic equations.">Discriminant</button>
+                <button class="example-chip" type="button" data-example="Check my solution: I solved x^2 - 4 = 0 and got x = 4 only. Explain my mistake.">Check mistake</button>
+                <button class="example-chip" type="button" data-example="Graph y=x^2+5x+6 and explain the intercepts and vertex.">Graph function</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="tutor-chat-card">
+            <div class="chat-header">
+              <div>
+                <p class="eyebrow">Live Tutor</p>
+                <h3>AI Math Tutor</h3>
+              </div>
+              <span class="context-chip" id="topicChip">Topic: Quadratic equations</span>
+            </div>
+
+            <div class="chat-feed" id="chatFeed" aria-live="polite"></div>
+
+            <form class="chat-form" id="chatForm">
+              <label class="chat-label" for="userPrompt">Ask a math question</label>
+              <textarea
+                id="userPrompt"
+                rows="5"
+                placeholder="Ask for a step-by-step solution, concept explanation, or paste your work to check it."
+              ></textarea>
+              <div class="chat-actions">
+                <button class="button button-primary" type="submit" id="sendPromptButton">Send to AI Tutor</button>
+                <button class="button button-secondary" type="button" id="clearChatButton">Clear chat</button>
+              </div>
+            </form>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="lab">
+        <div class="section-heading">
+          <p class="eyebrow">Live Lab</p>
+          <h2>Interactive demos for explanation and graphing.</h2>
+          <p>These modules support the tutor product: a quadratic visualizer, a simple AI predictor, and a general function grapher.</p>
+        </div>
+        <div class="lab-grid">
+          <article class="lab-card">
+            <div class="lab-head">
+              <h3>Quadratic Playground</h3>
+              <p>Move the coefficients and explain how the parabola changes.</p>
+            </div>
+            <form class="control-form" id="quadraticForm">
+              <label>
+                <span>a</span>
+                <input type="range" id="coefA" min="-6" max="6" step="1" value="1">
+              </label>
+              <label>
+                <span>b</span>
+                <input type="range" id="coefB" min="-12" max="12" step="1" value="-2">
+              </label>
+              <label>
+                <span>c</span>
+                <input type="range" id="coefC" min="-12" max="12" step="1" value="-3">
+              </label>
+            </form>
+            <div class="equation-line" id="equationLine"></div>
+            <svg id="quadraticChart" viewBox="0 0 320 220" role="img" aria-label="Quadratic graph"></svg>
+            <div class="result-panel" id="quadraticInsights"></div>
+          </article>
+
+          <article class="lab-card">
+            <div class="lab-head">
+              <h3>AI Mastery Predictor</h3>
+              <p>Simple score prediction that turns study patterns into an explainable result.</p>
+            </div>
+            <form class="control-form" id="predictorForm">
+              <label>
+                <span>Study hours</span>
+                <input type="range" id="studyHours" min="0" max="12" step="1" value="6">
+              </label>
+              <label>
+                <span>Practice tests</span>
+                <input type="range" id="practiceTests" min="0" max="10" step="1" value="5">
+              </label>
+              <label>
+                <span>Consistency</span>
+                <input type="range" id="consistency" min="0" max="100" step="5" value="70">
+              </label>
+            </form>
+            <div class="prediction-score">
+              <span id="predictionValue">0</span>
+              <small>predicted mastery</small>
+            </div>
+            <p class="explain-box" id="predictionExplanation"></p>
+          </article>
+        </div>
+
+        <div class="graph-grid">
+          <article class="lab-card">
+            <div class="lab-head">
+              <h3>Function Grapher</h3>
+              <p>Enter a function such as <code>y=x^2+5x+6</code> or <code>x^2-4x+3</code>.</p>
+            </div>
+            <form class="graph-form" id="functionForm">
+              <label class="stacked-field">
+                <span>Function input</span>
+                <input id="functionInput" type="text" value="y=x^2+5x+6" placeholder="y=x^2+5x+6">
+              </label>
+              <div class="chat-actions">
+                <button class="button button-primary" type="submit">Plot function</button>
+                <button class="button button-secondary" type="button" id="useFunctionInChat">Ask AI about this graph</button>
+              </div>
+            </form>
+            <div class="equation-line" id="functionStatus">Ready to graph.</div>
+            <svg id="functionChart" viewBox="0 0 320 220" role="img" aria-label="Function graph"></svg>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="chain">
+        <div class="section-heading">
+          <p class="eyebrow">Blockchain Layer</p>
+          <h2>Simulated credential chain.</h2>
+          <p>
+            This gives the AI story a trust layer. Every achievement entry references the previous hash so judges can see
+            how learning progress becomes a transparent record.
+          </p>
+        </div>
+        <div class="chain-layout">
+          <article class="chain-builder">
+            <form id="blockForm" class="block-form">
+              <label>
+                <span>Student</span>
+                <input id="studentName" type="text" value="Bakytzhan" maxlength="24">
+              </label>
+              <label>
+                <span>Achievement</span>
+                <input id="achievementName" type="text" value="AI Math Demo Completed" maxlength="40">
+              </label>
+              <label>
+                <span>Score</span>
+                <input id="achievementScore" type="number" value="94" min="0" max="100">
+              </label>
+              <button class="button button-primary" type="submit">Add Block</button>
+            </form>
+          </article>
+          <div class="chain-rail" id="chainRail"></div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contact">
+        <div class="section-heading">
+          <p class="eyebrow">Contact</p>
+          <h2>Bakytzhan.dev, reframed for a stronger demo day.</h2>
+          <p>
+            Email: <a href="mailto:bakulya014@gmail.com">bakulya014@gmail.com</a><br>
+            GitHub: <a href="https://github.com/bakulya014-dot" target="_blank" rel="noreferrer">github.com/bakulya014-dot</a>
+          </p>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
